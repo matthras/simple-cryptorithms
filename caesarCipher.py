@@ -16,9 +16,9 @@ def caesarCipher(message, shift, strip=False):
     for symbol in message:
         if symbol.isalpha():
             # The easiest way to convert each alphanumeric character is to transform them into Unicode/ASCII, which assigns each alphanumeric character a number. We can simply then increase/decrease that number to 'shift' forwards/backwards in the cipher.
-            # See https://unicode-table.com/en/
+            # See https://unicode-table.com/en/ for the letter - number reference.
             
-            unicodeNum = ord(symbol)
+            unicodeNum = ord(symbol) # Converts symbol to ASCII
             unicodeNum += shift
             
             if symbol.isupper():
@@ -32,10 +32,9 @@ def caesarCipher(message, shift, strip=False):
                 elif unicodeNum < ord('a'):
                     unicodeNum += 26
 
-            translatedMessage += chr(unicodeNum)
+            translatedMessage += chr(unicodeNum) # Converts ASCII back to symbol
         else:
             if not strip:
                 translatedMessage += symbol
 
     print('Your translated cipher is: ', translatedMessage)
-
